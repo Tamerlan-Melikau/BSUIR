@@ -1,4 +1,4 @@
-# БГУИР => ФИТУ => ИИ
+# БГУИР
 
 ### [Первый семестр (2025 - 2026)](https://github.com/tamerlan038/BSUIR/tree/semester-1)
 
