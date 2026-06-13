@@ -1,4 +1,5 @@
-# BSUIR
+# BSUIR (Belarusian State University of Informatics and Radioelectronics
+)
 
 ### [First semester (2025 - 2026)](https://github.com/tamerlan038/BSUIR/tree/semester-1)
 
