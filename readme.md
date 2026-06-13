@@ -12,7 +12,7 @@
 
 - [Fundamentals of Algorithms and Programming](https://github.com/tamerlan038/BSUIR/tree/semester-2/FoAaP)
 
-- [Displaying and Processing Information in Intelligent Systems](https://github.com/tamerlan038/BSUIR/tree/semester-2/PiOIvIS)
+- [Displaying and Processing Information in Intelligent Systems](https://github.com/tamerlan038/BSUIR/tree/semester-2/DaPIiIS)
 
 # Games and tasks
 
