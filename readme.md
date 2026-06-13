@@ -1,25 +1,25 @@
-# БГУИР
+# BSUIR
 
-### [Первый семестр (2025 - 2026)](https://github.com/tamerlan038/BSUIR/tree/semester-1)
+### [First semester (2025 - 2026)](https://github.com/tamerlan038/BSUIR/tree/semester-1)
 
-- [ОАиП](https://github.com/tamerlan038/BSUIR/tree/semester-1/ОАиП)
+- [Fundamentals of Algorithms and Programming](https://github.com/tamerlan038/BSUIR/tree/semester-1/ОАиП)
 
-- [ПиОИвИС](https://github.com/tamerlan038/BSUIR/tree/semester-1/ПиОИвИС)
+- [Displaying and Processing Information in Intelligent Systems](https://github.com/tamerlan038/BSUIR/tree/semester-1/ПиОИвИС)
 
-- [ТМОИС](https://github.com/tamerlan038/BSUIR/tree/semester-1/ТМОИС)
+- [Theoretical multiple foundations of Intellectual systems](https://github.com/tamerlan038/BSUIR/tree/semester-1/ТМОИС)
 
-### [Второй семестр (2025 - 2026)](https://github.com/tamerlan038/BSUIR/tree/semester-2)
+### [Second semester (2025 - 2026)](https://github.com/tamerlan038/BSUIR/tree/semester-2)
 
-- [ОАиП](https://github.com/tamerlan038/BSUIR/tree/semester-2/ОАиП)
+- [Fundamentals of Algorithms and Programming](https://github.com/tamerlan038/BSUIR/tree/semester-2/ОАиП)
 
-- [ПиОИвИС](https://github.com/tamerlan038/BSUIR/tree/semester-2/PiOIvIS)
+- [Displaying and Processing Information in Intelligent Systems](https://github.com/tamerlan038/BSUIR/tree/semester-2/PiOIvIS)
 
-# Мини игры и задания
+# Games and tasks
 
 - [№1](https://github.com/tamerlan038/BSUIR/tree/tasks/tasks/%E2%84%961)
 
 - [№2](https://github.com/tamerlan038/BSUIR/tree/tasks/tasks/%E2%84%962)
 
-- [№3 мини-казик](https://github.com/tamerlan038/BSUIR/tree/tasks/tasks/%E2%84%963)
+- [№3 mini-casino](https://github.com/tamerlan038/BSUIR/tree/tasks/tasks/%E2%84%963)
 
 - [№4](https://github.com/tamerlan038/BSUIR/tree/tasks/tasks/%E2%84%964)
