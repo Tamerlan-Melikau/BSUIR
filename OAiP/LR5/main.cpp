@@ -235,15 +235,15 @@ void printAllTraversals(Tree* root) {
         return;
     }
         
-    std::cout << "\n1. Прямой обход:\n";
+    std::cout << "\n1. Pre-order traversal:\n";
     printPreOrder(root);
     std::cout << std::endl;
     
-    std::cout << "\n2. Обратный обход:\n";
+    std::cout << "\n2. Post-order traversal:\n";
     printPostOrder(root);
     std::cout << std::endl;
     
-    std::cout << "\n3. Симметричный обход:\n";
+    std::cout << "\n3. In-order traversal:\n";
     printInOrder(root);
     std::cout << std::endl;
 }
