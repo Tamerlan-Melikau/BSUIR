@@ -9,38 +9,38 @@ bonus_standard = Relation()
 bonus_high = Relation()
 
 facts(employee,
-    ("Тамерлан",),
-    ("Анна",),
-    ("Иван",),
-    ("Ольга",),
-    ("Петр",),
-    ("Мария",),
-    ("Сергей",)
+    ("Tamerlan",),
+    ("Anna",),
+    ("Ivan",),
+    ("Olga",),
+    ("Peter",),
+    ("Maria",),
+    ("Sergey",)
 )
 
 facts(kpi_level,
-    ("Тамерлан", "excellent"),
-    ("Анна", "excellent"),
-    ("Иван", "high"),
-    ("Ольга", "low"),
-    ("Петр", "high"),
-    ("Мария", "excellent"),
-    ("Сергей", "high")
+    ("Tamerlan", "excellent"),
+    ("Anna", "excellent"),
+    ("Ivan", "high"),
+    ("Olga", "low"),
+    ("Peter", "high"),
+    ("Maria", "excellent"),
+    ("Sergey", "high")
 )
 
 facts(tasks_level,
-    ("Тамерлан", "high"),  
-    ("Анна", "high"),
-    ("Иван", "medium"),
-    ("Ольга", "low"),
-    ("Петр", "medium"),
-    ("Мария", "high"),
-    ("Сергей", "medium")
+    ("Tamerlan", "high"),  
+    ("Anna", "high"),
+    ("Ivan", "medium"),
+    ("Olga", "low"),
+    ("Peter", "medium"),
+    ("Maria", "high"),
+    ("Sergey", "medium")
 )
 
 facts(has_violation,
-    ("Иван", "опоздание"),
-    ("Ольга", "ошибка в отчете")
+    ("Ivan", "lateness"),
+    ("Olga", "error in report")
 )
 
 def rule_kpi_ok(emp):
@@ -91,28 +91,28 @@ def get_violations(emp):
             violations_list.append(str(item))
     return violations_list
 
-employees = ["Тамерлан", "Анна", "Иван", "Ольга", "Петр", "Мария", "Сергей"]
+employees = ["Tamerlan", "Anna", "Ivan", "Olga", "Peter", "Maria", "Sergey"]
 
-print("запрос 1: сотрудники, прошедшие базовые критерии (kpi>=80, задачи>=8, нет нарушений)")
+print("Query 1: employees who passed basic criteria (kpi>=80, tasks>=8, no violations)")
 for emp in employees:
     if is_eligible(emp):
         print(f"  {emp}")
 
 print("\n")
-print("запрос 2: сотрудники с высокой премией (kpi>90 и задачи>=12)")
+print("Query 2: employees with high bonus (kpi>90 and tasks>=12)")
 for emp in employees:
     if bonus_level(emp) == 2:
         print(f"  {emp}")
 
 print("\n")
-print("запрос 3: сотрудники с нарушениями")
+print("Query 3: employees with violations")
 for emp in employees:
     violations = get_violations(emp)
     if violations:
         print(f"  {emp}: {violations}")
 
 print("\n")
-print("запрос 4: детальный анализ по каждому сотруднику")
+print("Query 4: detailed analysis for each employee")
 for emp in employees:
     kpi_lvl_result = run(1, var(), kpi_level(emp, var()))
     kpi_lvl = kpi_lvl_result[0] if kpi_lvl_result else "unknown"
@@ -128,13 +128,13 @@ for emp in employees:
     level = bonus_level(emp)
     
     print(f"\n{emp}:")
-    print(f"  kpi уровень: {kpi_lvl}")
-    print(f"  задачи уровень: {tasks_lvl}")
-    print(f"  нарушения: {'есть' if has_viol else 'нет'}")
+    print(f"  kpi level: {kpi_lvl}")
+    print(f"  tasks level: {tasks_lvl}")
+    print(f"  violations: {'yes' if has_viol else 'no'}")
     
     if level == 2:
-        print(f"  премия: высокая")
+        print(f"  bonus: high")
     elif level == 1:
-        print(f"  премия: стандартная")
+        print(f"  bonus: standard")
     else:
-        print(f"  премия: нет")
+        print(f"  bonus: none")

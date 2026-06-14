@@ -2,94 +2,94 @@ from experta import Fact, KnowledgeEngine, Rule, NOT, MATCH
 
 
 class Symptom(Fact):
-    """Симптом пациента."""
+    """Patient symptom."""
     pass
 
 
 class Diagnosis(Fact):
-    """Диагноз."""
+    """Diagnosis."""
     pass
 
 
 class DiagnosisEngine(KnowledgeEngine):
-    @Rule(NOT(Symptom(name='температура')))
+    @Rule(NOT(Symptom(name='temperature')))
     def ask_temperature(self):
-        value = input("Температура (нормальная/повышенная/высокая/неизвестно): ").strip().lower()
-        self.declare(Symptom(name='температура', value=value))
+        value = input("Temperature (normal/elevated/high/unknown): ").strip().lower()
+        self.declare(Symptom(name='temperature', value=value))
 
-    @Rule(NOT(Symptom(name='кашель')))
+    @Rule(NOT(Symptom(name='cough')))
     def ask_cough(self):
-        value = input("Кашель (нет/сухой/влажный/неизвестно): ").strip().lower()
-        self.declare(Symptom(name='кашель', value=value))
+        value = input("Cough (none/dry/wet/unknown): ").strip().lower()
+        self.declare(Symptom(name='cough', value=value))
 
-    @Rule(NOT(Symptom(name='насморк')))
+    @Rule(NOT(Symptom(name='runny_nose')))
     def ask_cold(self):
-        value = input("Насморк (нет/есть/неизвестно): ").strip().lower()
-        self.declare(Symptom(name='насморк', value=value))
+        value = input("Runny nose (no/yes/unknown): ").strip().lower()
+        self.declare(Symptom(name='runny_nose', value=value))
 
     @Rule(
-        Symptom(name='температура', value='высокая'),
-        Symptom(name='кашель', value='сухой') | Symptom(name='кашель', value='влажный'),
-        Symptom(name='насморк', value='есть')
+        Symptom(name='temperature', value='high'),
+        Symptom(name='cough', value='dry') | Symptom(name='cough', value='wet'),
+        Symptom(name='runny_nose', value='yes')
     )
     def flu(self):
-        self.declare(Diagnosis(name='грипп'))
-        print("Предположительный диагноз: грипп")
+        self.declare(Diagnosis(name='flu'))
+        print("Presumptive diagnosis: flu")
 
     @Rule(
-        Symptom(name='температура', value='повышенная'),
-        Symptom(name='кашель', value='сухой') | Symptom(name='кашель', value='влажный'),
-        Symptom(name='насморк', value='есть')
+        Symptom(name='temperature', value='elevated'),
+        Symptom(name='cough', value='dry') | Symptom(name='cough', value='wet'),
+        Symptom(name='runny_nose', value='yes')
     )
     def orz(self):
-        self.declare(Diagnosis(name='ОРЗ'))
-        print("Предположительный диагноз: ОРЗ")
+        self.declare(Diagnosis(name='ARI'))
+        print("Presumptive diagnosis: ARI")
 
     @Rule(
-        Symptom(name='кашель', value='сухой') | Symptom(name='кашель', value='влажный'),
-        Symptom(name='температура', value='нормальная') | Symptom(name='температура', value='неизвестно'),
-        Symptom(name='насморк', value='нет') | Symptom(name='насморк', value='неизвестно'),
-        NOT(Diagnosis(name='грипп')),
-        NOT(Diagnosis(name='ОРЗ'))
+        Symptom(name='cough', value='dry') | Symptom(name='cough', value='wet'),
+        Symptom(name='temperature', value='normal') | Symptom(name='temperature', value='unknown'),
+        Symptom(name='runny_nose', value='no') | Symptom(name='runny_nose', value='unknown'),
+        NOT(Diagnosis(name='flu')),
+        NOT(Diagnosis(name='ARI'))
     )
     def isolated_cough(self):
-        self.declare(Diagnosis(name='изолированный_кашель'))
-        print("Есть кашель без других выраженных симптомов. Нужна дополнительная диагностика.")
+        self.declare(Diagnosis(name='isolated_cough'))
+        print("Cough without other pronounced symptoms. Additional diagnostics needed.")
 
     @Rule(
-        Symptom(name='насморк', value='есть'),
-        Symptom(name='температура', value='нормальная') | Symptom(name='температура', value='неизвестно'),
-        Symptom(name='кашель', value='нет') | Symptom(name='кашель', value='неизвестно'),
-        NOT(Diagnosis(name='грипп')),
-        NOT(Diagnosis(name='ОРЗ')),
-        NOT(Diagnosis(name='изолированный_кашель'))
+        Symptom(name='runny_nose', value='yes'),
+        Symptom(name='temperature', value='normal') | Symptom(name='temperature', value='unknown'),
+        Symptom(name='cough', value='no') | Symptom(name='cough', value='unknown'),
+        NOT(Diagnosis(name='flu')),
+        NOT(Diagnosis(name='ARI')),
+        NOT(Diagnosis(name='isolated_cough'))
     )
     def rhinitis(self):
-        self.declare(Diagnosis(name='ринит'))
-        print("Вероятно, лёгкий ринит (насморк без других симптомов).")
+        self.declare(Diagnosis(name='rhinitis'))
+        print("Probably mild rhinitis (runny nose without other symptoms).")
 
     @Rule(
-        Symptom(name='температура', value='нормальная'),
-        Symptom(name='кашель', value='нет'),
-        Symptom(name='насморк', value='нет'),
-        NOT(Diagnosis(name='грипп')),
-        NOT(Diagnosis(name='ОРЗ')),
-        NOT(Diagnosis(name='изолированный_кашель')),
-        NOT(Diagnosis(name='ринит'))
+        Symptom(name='temperature', value='normal'),
+        Symptom(name='cough', value='no'),
+        Symptom(name='runny_nose', value='no'),
+        NOT(Diagnosis(name='flu')),
+        NOT(Diagnosis(name='ARI')),
+        NOT(Diagnosis(name='isolated_cough')),
+        NOT(Diagnosis(name='rhinitis'))
     )
     def healthy(self):
-        self.declare(Diagnosis(name='здоров'))
-        print("Вероятно, вы здоровы.")
+        self.declare(Diagnosis(name='healthy'))
+        print("You are probably healthy.")
 
     @Rule(
-        Symptom(name='температура', value=MATCH.t),
-        Symptom(name='кашель', value=MATCH.c),
-        Symptom(name='насморк', value=MATCH.n),
+        Symptom(name='temperature', value=MATCH.t),
+        Symptom(name='cough', value=MATCH.c),
+        Symptom(name='runny_nose', value=MATCH.n),
         NOT(Diagnosis())
     )
     def unknown(self, t, c, n):
-        print("Не удалось поставить однозначный диагноз.")
-        print(f"Введённые симптомы: температура={t}, кашель={c}, насморк={n}")
+        print("Could not make an unambiguous diagnosis.")
+        print(f"Entered symptoms: temperature={t}, cough={c}, runny_nose={n}")
 
 
 if __name__ == "__main__":

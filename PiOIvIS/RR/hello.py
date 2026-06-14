@@ -81,9 +81,9 @@ class Dinic:
         return flow_dict
 
     def print_incidence_list(self):
-        print("\n--- Список инцидентности (остаточная сеть) ---")
+        print("\n--- Incidence list (residual network) ---")
         for i, edges in enumerate(self.graph):
-            print(f"Вершина {i}:")
+            print(f"Vertex {i}:")
             for e in edges:
                 print(f"- {e.to} (cap: {e.capacity})")
         print("-----------------------------------------------")
@@ -125,17 +125,17 @@ class Dinic:
         
         if flow:
             total_flow = sum(flow.values())
-            plt.title(f"Максимальный поток: {total_flow} (Исток: {s} -> Сток: {t})", 
+            plt.title(f"Maximum flow: {total_flow} (Source: {s} -> Sink: {t})", 
                       fontsize=14, fontweight='bold')
         else:
-            plt.title(f"Граф потока (Исток: {s} -> Сток: {t})", 
+            plt.title(f"Flow graph (Source: {s} -> Sink: {t})", 
                       fontsize=14, fontweight='bold')
         
         from matplotlib.patches import Patch
         legend_elements = [
-            Patch(facecolor='lightgreen', alpha=0.8, label='Исток'),
-            Patch(facecolor='lightcoral', alpha=0.8, label='Сток'),
-            Patch(facecolor='lightblue', alpha=0.8, label='Промежуточная вершина')
+            Patch(facecolor='lightgreen', alpha=0.8, label='Source'),
+            Patch(facecolor='lightcoral', alpha=0.8, label='Sink'),
+            Patch(facecolor='lightblue', alpha=0.8, label='Intermediate vertex')
         ]
         plt.legend(handles=legend_elements, loc='upper right')
         
@@ -180,7 +180,7 @@ class Dinic:
         nx.draw_networkx_labels(G, pos, font_size=12, font_weight='bold')
         nx.draw_networkx_edge_labels(G, pos, edge_labels, font_size=9)
         
-        plt.title(f"Остаточная сеть (Синие - прямые рёбра, Красные - обратные)", 
+        plt.title(f"Residual network (Blue - forward edges, Red - backward edges)", 
                   fontsize=12)
         plt.axis('off')
         plt.tight_layout()
@@ -192,128 +192,128 @@ def load_graph_from_file(filename):
         with open(filename, 'r') as f:
             lines = f.read().strip().split('\n')
             if not lines:
-                raise ValueError("Пустой файл")
+                raise ValueError("Empty file")
             n, m = map(int, lines[0].split())
             s, t = map(int, lines[1].split())
             
             if len(lines) < 2 + m:
-                raise ValueError(f"Недостаточно строк: ожидается {2+m}, получено {len(lines)}")
+                raise ValueError(f"Insufficient lines: expected {2+m}, got {len(lines)}")
             
             dinic = Dinic(n)
             for i in range(2, 2 + m):
                 u, v, c = map(int, lines[i].split())
                 if u >= n or v >= n:
-                    raise ValueError(f"Вершина {u} или {v} вне диапазона 0..{n-1}")
+                    raise ValueError(f"Vertex {u} or {v} out of range 0..{n-1}")
                 dinic.add_edge(u, v, c)
             return dinic, s, t
     except Exception as e:
-        print(f"Ошибка при чтении файла: {e}")
+        print(f"Error reading file: {e}")
         return None, None, None
 
 
 def load_graph_from_console():
     try:
-        n = int(input("Введите количество вершин: "))
+        n = int(input("Enter number of vertices: "))
         if n < 0:
-            raise ValueError("Количество вершин не может быть отрицательным")
+            raise ValueError("Number of vertices cannot be negative")
         
-        m = int(input("Введите количество рёбер: "))
-        s = int(input("Введите номер истока: "))
-        t = int(input("Введите номер стока: "))
+        m = int(input("Enter number of edges: "))
+        s = int(input("Enter source vertex: "))
+        t = int(input("Enter sink vertex: "))
         
         if s >= n or t >= n:
-            raise ValueError(f"Исток или сток вне диапазона 0..{n-1}")
+            raise ValueError(f"Source or sink out of range 0..{n-1}")
         
         dinic = Dinic(n)
-        print("Введите рёбра в формате: from to capacity")
+        print("Enter edges in format: from to capacity")
         for i in range(m):
-            u, v, c = map(int, input(f"Ребро {i+1}: ").split())
+            u, v, c = map(int, input(f"Edge {i+1}: ").split())
             if u >= n or v >= n:
-                raise ValueError(f"Вершина {u} или {v} вне диапазона 0..{n-1}")
+                raise ValueError(f"Vertex {u} or {v} out of range 0..{n-1}")
             if c < 0:
-                raise ValueError(f"Пропускная способность не может быть отрицательной: {c}")
+                raise ValueError(f"Capacity cannot be negative: {c}")
             dinic.add_edge(u, v, c)
         return dinic, s, t
     except Exception as e:
-        print(f"Ошибка ввода: {e}")
+        print(f"Input error: {e}")
         return None, None, None
 
 
 def run_tests():
-    # ПУНКТ 4a: Пустой граф
+    # ITEM 4a: Empty graph
     print("\n" + "=" * 60)
-    print("ТЕСТ 1: Пустой граф (0 вершин)")
+    print("TEST 1: Empty graph (0 vertices)")
     dinic_empty = Dinic(0)
-    print(f"Пустой граф создан: n={dinic_empty.n}")
+    print(f"Empty graph created: n={dinic_empty.n}")
     
     print("\n" + "=" * 60)
-    print("ТЕСТ 2: Граф с одной вершиной")
+    print("TEST 2: Graph with one vertex")
     dinic_one = Dinic(1)
-    dinic_one.add_edge(0, 0, 100)  # ПУНКТ 4c: Петля
-    print(f"Поток из 0 в 0: {dinic_one.max_flow(0, 0)} (ожидается 0)")
+    dinic_one.add_edge(0, 0, 100)  # ITEM 4c: Self-loop
+    print(f"Flow from 0 to 0: {dinic_one.max_flow(0, 0)} (expected 0)")
     dinic_one.print_incidence_list()
     
     print("\n" + "=" * 60)
-    print("ТЕСТ 3: Простой граф с двумя вершинами")
+    print("TEST 3: Simple graph with two vertices")
     dinic_two = Dinic(2)
     dinic_two.add_edge(0, 1, 5)
     flow = dinic_two.max_flow(0, 1)
-    print(f"Поток из 0 в 1: {flow} (ожидается 5)")
+    print(f"Flow from 0 to 1: {flow} (expected 5)")
     dinic_two.visualize_graph(0, 1, dinic_two.get_flow(0, 1))
     
     print("\n" + "=" * 60)
-    print("ТЕСТ 4: Граф с кратными рёбрами")
+    print("TEST 4: Graph with multiple edges")
     dinic_multi = Dinic(2)
     dinic_multi.add_edge(0, 1, 3)
     dinic_multi.add_edge(0, 1, 4)
     flow = dinic_multi.max_flow(0, 1)
-    print(f"Суммарный поток: {flow} (ожидается 7)")
+    print(f"Total flow: {flow} (expected 7)")
     dinic_multi.visualize_graph(0, 1, dinic_multi.get_flow(0, 1))
 
 
 def main():
-    print("Алгоритм Диница (максимальный поток) — представление: список инцидентности")
-    print("Выберите способ загрузки графа:")
-    print("1. Загрузить из файла")
-    print("2. Ввести с консоли")
-    print("3. Запустить автоматические тесты")
-    choice = input("Ваш выбор: ")
+    print("Dinic's algorithm (maximum flow) — representation: incidence list")
+    print("Choose graph loading method:")
+    print("1. Load from file")
+    print("2. Enter from console")
+    print("3. Run automatic tests")
+    choice = input("Your choice: ")
 
     if choice == "1":
-        filename = input("Введите имя файла: ")
+        filename = input("Enter filename: ")
         dinic, s, t = load_graph_from_file(filename)
         if dinic:
             flow = dinic.max_flow(s, t)
-            print(f"Максимальный поток из {s} в {t}: {flow}")
+            print(f"Maximum flow from {s} to {t}: {flow}")
             dinic.print_incidence_list()
             
-            show_viz = input("Показать визуализацию графа? (y/n): ").lower()
+            show_viz = input("Show graph visualization? (y/n): ").lower()
             if show_viz == 'y':
                 dinic.visualize_graph(s, t, dinic.get_flow(s, t))
-                show_residual = input("Показать остаточную сеть? (y/n): ").lower()
+                show_residual = input("Show residual network? (y/n): ").lower()
                 if show_residual == 'y':
                     dinic.visualize_residual_network(s, t)
         else:
-            print("Не удалось загрузить граф.")
+            print("Failed to load graph.")
     elif choice == "2":
         dinic, s, t = load_graph_from_console()
         if dinic:
             flow = dinic.max_flow(s, t)
-            print(f"Максимальный поток из {s} в {t}: {flow}")
+            print(f"Maximum flow from {s} to {t}: {flow}")
             dinic.print_incidence_list()
             
-            show_viz = input("Показать визуализацию графа? (y/n): ").lower()
+            show_viz = input("Show graph visualization? (y/n): ").lower()
             if show_viz == 'y':
                 dinic.visualize_graph(s, t, dinic.get_flow(s, t))
-                show_residual = input("Показать остаточную сеть? (y/n): ").lower()
+                show_residual = input("Show residual network? (y/n): ").lower()
                 if show_residual == 'y':
                     dinic.visualize_residual_network(s, t)
         else:
-            print("Ошибка ввода.")
+            print("Input error.")
     elif choice == "3":
         run_tests()
     else:
-        print("Неверный выбор, запускаю тесты по умолчанию.")
+        print("Invalid choice, running default tests.")
         run_tests()
 
 
