@@ -10,9 +10,9 @@
 
 ### [Second semester (2025 - 2026)](https://github.com/tamerlan038/BSUIR/tree/semester-2)
 
-- [Fundamentals of Algorithms and Programming](https://github.com/tamerlan038/BSUIR/tree/semester-2/FoAaP)
+- [Fundamentals of Algorithms and Programming](https://github.com/tamerlan038/BSUIR/tree/semester-2/OAiP)
 
-- [Displaying and Processing Information in Intelligent Systems](https://github.com/tamerlan038/BSUIR/tree/semester-2/DaPIiIS)
+- [Displaying and Processing Information in Intelligent Systems](https://github.com/tamerlan038/BSUIR/tree/semester-2/PiOIvIS)
 
 # Games and tasks
 
