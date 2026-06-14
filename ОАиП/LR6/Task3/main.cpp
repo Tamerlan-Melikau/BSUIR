@@ -3,7 +3,7 @@
 
 int main() {
     std::string word;
-    std::cout << "Введите слово: ";
+    std::cout << "Enter the word: ";
     std::cin >> word;
     
     int left = 0;
@@ -20,9 +20,9 @@ int main() {
     }
     
     if (isPal) {
-        std::cout << "ДА, это палиндром!" << std::endl;
+        std::cout << "Yes, it’s a palindren" << std::endl;
     } else {
-        std::cout << "НЕТ, это не палиндром" << std::endl;
+        std::cout << "No, it’s not a palindren" << std::endl;
     }
     
     return 0;

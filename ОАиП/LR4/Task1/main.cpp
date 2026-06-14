@@ -8,22 +8,22 @@ int main() {
     char choice;
     
     do {
-        cout << "Введите число: ";
+        cout << "Enter nuber: ";
         cin >> x;
         N[n] = x;
         n++;
         
         if (n >= 20) {
-            cout << "Достигнут максимум (20 чисел)" << endl;
+            cout << "Maximum reached (20 numbers)" << endl;
             break;
         }
         
-        cout << "Хотите ввести еще одно число? (y/n): ";
+        cout << "Want to enter another number? (y/n): ";
         cin >> choice;
         
     } while (choice == 'y' || choice == 'Y');
 
-    cout << "Введенные числа: ";
+    cout << "Entered numbers: ";
     for (int i = 0; i < n; i++) {
         cout << N[i] << " ";
     }
@@ -38,14 +38,14 @@ int main() {
     }
     
     if (positiveIndex == -1) {
-        cout << "Положительных чисел нет!" << endl;
+        cout << "No positive numbers!" << endl;
     } else {
         double sum = 0;
         for (int i = positiveIndex + 1; i < n; i++) {
             sum += N[i];
         }
-        cout << "Первое положительное число: " << N[positiveIndex] << endl;
-        cout << "Сумма чисел после него: " << sum << endl;
+        cout << "First positive number: " << N[positiveIndex] << endl;
+        cout << "Sum of numbers after it: " << sum << endl;
     }
     
     return 0;

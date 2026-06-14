@@ -9,7 +9,7 @@ int main(){
     char yon;
     int number;
     
-    std::cout << ("Ввести число самому - 1, рандомом - 2\n");
+    std::cout << ("Enter number yourself - 1, random - 2\n");
     
     if(!(std::cin >> number)){
         std::cout << ("Incorrect data input");
@@ -18,7 +18,7 @@ int main(){
 
     
     if (number == 1){
-        std::cout << ("Введите число: \n");
+        std::cout << ("Enter number: \n");
         
         if(!(std::cin >> x)){
             std::cout << ("Incorrect data input");
@@ -30,9 +30,9 @@ int main(){
         n++;
         
         if (n >= 20) {
-            std::cout << "Достигнут максимум (20 чисел)" << std::endl;
+            std::cout << "Maximum reached (20 numbers)" << std::endl;
         } else {
-            std::cout << ("Хотите ввести еще число?(y/n)");
+            std::cout << ("Want to enter another number?(y/n)");
             
             if(!(std::cin >> yon)){
                 std::cout << ("Incorrect data input");
@@ -42,11 +42,11 @@ int main(){
             
             while(yon == 'y'){
                 if (n >= 20) {
-                    std::cout << "Достигнут максимум (20 чисел)" << std::endl;
+                    std::cout << "Maximum reached (20 numbers)" << std::endl;
                     break;
                 }
                 
-                std::cout << ("Введите число: \n");
+                std::cout << ("Enter a number: \n");
                 
                 if(!(std::cin >> x)){
                     std::cout << ("Incorrect data input");
@@ -57,35 +57,35 @@ int main(){
                 n++;
 
                 if (n >= 20) {
-                    std::cout << "Достигнут максимум (20 чисел)" << std::endl;
+                    std::cout << "Maximum reached (20 numbers)" << std::endl;
                     break;
                 } else {
-                    std::cout << ("Хотите ввести еще число?(y/n)");
+                    std::cout << ("Want to enter another number?(y/n)");
                     std::cin >> yon;
                 }
             }
         }
     }
     else if (number == 2){
-        std::cout << ("Хотите я введу число?(y/n)");
+        std::cout << ("Do you want me to enter a number?(y/n)");
         std::cin >> yon;
         
         while (yon == 'y'){
             if (n >= 20) {
-                std::cout << "Достигнут максимум (20 чисел)" << std::endl;
+                std::cout << "Maximum reached (20 numbers)" << std::endl;
                 break;
             }
             
             int randomNumber = (std::rand() % 201) - 100;
-            std::cout << "Случайное число: " << randomNumber;
+            std::cout << "Random number: " << randomNumber;
             arr[n] = randomNumber;
             n++;
             
             if (n >= 20) {
-                std::cout << "Достигнут максимум (20 чисел)" << std::endl;
+                std::cout << "Maximum reached (20 numbers)" << std::endl;
                 break;
             } else {
-                std::cout << ("\nХотите ввести еще число?(y/n)");
+                std::cout << ("\nWant to enter another number?(y/n)");
                 std::cin >> yon;
             }
         }

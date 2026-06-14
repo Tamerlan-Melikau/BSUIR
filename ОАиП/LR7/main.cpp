@@ -25,7 +25,7 @@ void cleanRecords() {
     students = new Student[10];
     studentCapacity = 10;
     studentCount = 0;
-    std::cout << "База данных очищена. Готово для создания новых записей\n";
+    std::cout << "Database cleaned. Ready to create new records\n";
 }
 
 void addRecord() {
@@ -40,15 +40,15 @@ void addRecord() {
     }
 
     Student student;
-    std::cout << "Введите фамилию: ";
+    std::cout << "Enter surname: ";
     std::cin >> student.surname;
-    std::cout << "Введите номер группы: ";
+    std::cout << "Enter group number: ";
     std::cin >> student.group;
-    std::cout << "Введите оценку по физике: ";
+    std::cout << "Enter physics grade: ";
     std::cin >> student.physics;
-    std::cout << "Введите оценку по математике: ";
+    std::cout << "Enter math grade: ";
     std::cin >> student.math;
-    std::cout << "Введите оценку по информатике: ";
+    std::cout << "Enter informatics grade: ";
     std::cin >> student.informatics;
 
     calculateAverage(student);
@@ -56,40 +56,40 @@ void addRecord() {
     students[studentCount] = student;
     studentCount++;
 
-    std::cout << "Запись добавлена\n";
+    std::cout << "Record added\n";
 }
 
 void viewRecords() {
     if (studentCount == 0) {
-        std::cout << "Нет записей для просмотра\n";
+        std::cout << "No records to view\n";
         return;
     }
 
-    std::cout << "\nСписок всех студентов:\n";
+    std::cout << "\nList of all students:\n";
     std::cout << "-------------------------\n";
     
     for (int i = 0; i < studentCount; i++) {
-        std::cout << "Студент #" << (i + 1) << ":\n";
-        std::cout << "Фамилия: " << students[i].surname << std::endl;
-        std::cout << "Группа: " << students[i].group << std::endl;
-        std::cout << "Физика: " << students[i].physics << std::endl;
-        std::cout << "Математика: " << students[i].math << std::endl;
-        std::cout << "Информатика: " << students[i].informatics << std::endl;
-        std::cout << "Средний балл: " << students[i].average << std::endl;
+        std::cout << "Student #" << (i + 1) << ":\n";
+        std::cout << "Surname: " << students[i].surname << std::endl;
+        std::cout << "Group: " << students[i].group << std::endl;
+        std::cout << "Physics: " << students[i].physics << std::endl;
+        std::cout << "Math: " << students[i].math << std::endl;
+        std::cout << "Informatics: " << students[i].informatics << std::endl;
+        std::cout << "Average grade: " << students[i].average << std::endl;
         std::cout << "------------------------\n";
     }
-    std::cout << "Всего студентов: " << studentCount << std::endl;
+    std::cout << "Total students: " << studentCount << std::endl;
 }
 
 void solveIndividualTask() {
     if (studentCount == 0) {
-        std::cout << "Нет записей для анализа\n";
+        std::cout << "No records for analysis\n";
         return;
     }
 
     int count = 0;
 
-    std::cout << "\nСтуденты с оценкой 7 или 8 по физике и 9 или 10 по математике:\n";
+    std::cout << "\nStudents with physics grade 7 or 8 and math grade 9 or 10:\n";
     std::cout << "----------------------------------------------------------------\n";
 
     for (int i = 0; i < studentCount; i++) {
@@ -98,36 +98,36 @@ void solveIndividualTask() {
         
         if (physicsCondition && mathCondition) {
             count++;
-            std::cout << "Студент #" << count << ":\n";
-            std::cout << "Фамилия: " << students[i].surname << std::endl;
-            std::cout << "Группа: " << students[i].group << std::endl;
-            std::cout << "Физика: " << students[i].physics << std::endl;
-            std::cout << "Математика: " << students[i].math << std::endl;
-            std::cout << "Информатика: " << students[i].informatics << std::endl;
-            std::cout << "Средний балл: " << students[i].average << std::endl;
+            std::cout << "Student #" << count << ":\n";
+            std::cout << "Surname: " << students[i].surname << std::endl;
+            std::cout << "Group: " << students[i].group << std::endl;
+            std::cout << "Physics: " << students[i].physics << std::endl;
+            std::cout << "Math: " << students[i].math << std::endl;
+            std::cout << "Informatics: " << students[i].informatics << std::endl;
+            std::cout << "Average grade: " << students[i].average << std::endl;
             std::cout << "------------------------\n";
         }
     }
 
     if (count > 0) {
-        std::cout << "Найдено студентов: " << count << std::endl;
+        std::cout << "Students found: " << count << std::endl;
     } else {
-        std::cout << "Студенты с указанными оценками не найдены\n";
+        std::cout << "No students with the specified grades found\n";
     }
 }
 
 void deleteRecord() {
     if (studentCount == 0) {
-        std::cout << "Нет записей для удаления\n";
+        std::cout << "No records to delete\n";
         return;
     }
 
     int recordNumber;
-    std::cout << "Введите номер записи для удаления (1-" << studentCount << "): ";
+    std::cout << "Enter record number to delete (1-" << studentCount << "): ";
     std::cin >> recordNumber;
 
     if (recordNumber < 1 || recordNumber > studentCount) {
-        std::cout << "Неверный номер записи\n";
+        std::cout << "Invalid record number\n";
         return;
     }
 
@@ -136,62 +136,62 @@ void deleteRecord() {
     }
 
     studentCount--;
-    std::cout << "Запись #" << recordNumber << " удалена\n";
+    std::cout << "Record #" << recordNumber << " deleted\n";
 }
 
 void editRecord() {
     if (studentCount == 0) {
-        std::cout << "Нет записей для редактирования\n";
+        std::cout << "No records to edit\n";
         return;
     }
 
     int recordNumber;
-    std::cout << "Введите номер записи для редактирования (1-" << studentCount << "): ";
+    std::cout << "Enter record number to edit (1-" << studentCount << "): ";
     std::cin >> recordNumber;
 
     if (recordNumber < 1 || recordNumber > studentCount) {
-        std::cout << "Неверный номер записи\n";
+        std::cout << "Invalid record number\n";
         return;
     }
 
     Student& student = students[recordNumber - 1];
 
-    std::cout << "Текущие данные записи #" << recordNumber << ":\n";
-    std::cout << "Фамилия: " << student.surname << std::endl;
-    std::cout << "Группа: " << student.group << std::endl;
-    std::cout << "Физика: " << student.physics << std::endl;
-    std::cout << "Математика: " << student.math << std::endl;
-    std::cout << "Информатика: " << student.informatics << std::endl;
+    std::cout << "Current data of record #" << recordNumber << ":\n";
+    std::cout << "Surname: " << student.surname << std::endl;
+    std::cout << "Group: " << student.group << std::endl;
+    std::cout << "Physics: " << student.physics << std::endl;
+    std::cout << "Math: " << student.math << std::endl;
+    std::cout << "Informatics: " << student.informatics << std::endl;
 
-    std::cout << "\nВведите новые данные:\n";
-    std::cout << "Введите фамилию: ";
+    std::cout << "\nEnter new data:\n";
+    std::cout << "Enter surname: ";
     std::cin >> student.surname;
-    std::cout << "Введите номер группы: ";
+    std::cout << "Enter group number: ";
     std::cin >> student.group;
-    std::cout << "Введите оценку по физике: ";
+    std::cout << "Enter physics grade: ";
     std::cin >> student.physics;
-    std::cout << "Введите оценку по математике: ";
+    std::cout << "Enter math grade: ";
     std::cin >> student.math;
-    std::cout << "Введите оценку по информатике: ";
+    std::cout << "Enter informatics grade: ";
     std::cin >> student.informatics;
 
     calculateAverage(student);
-    std::cout << "Запись отредактирована\n";
+    std::cout << "Record edited\n";
 }
 
 void sortRecords() {
     if (studentCount == 0) {
-        std::cout << "Нет записей для сортировки\n";
+        std::cout << "No records to sort\n";
         return;
     }
 
     int sortChoice;
-    std::cout << "\nВыберите тип сортировки:\n";
-    std::cout << "1. По фамилии (по возрастанию)\n";
-    std::cout << "2. По фамилии (по убыванию)\n";
-    std::cout << "3. По среднему баллу (по возрастанию)\n";
-    std::cout << "4. По среднему баллу (по убыванию)\n";
-    std::cout << "Ваш выбор: ";
+    std::cout << "\nChoose sorting type:\n";
+    std::cout << "1. By surname (ascending)\n";
+    std::cout << "2. By surname (descending)\n";
+    std::cout << "3. By average grade (ascending)\n";
+    std::cout << "4. By average grade (descending)\n";
+    std::cout << "Your choice: ";
     std::cin >> sortChoice;
 
     for (int i = 0; i < studentCount - 1; i++) {
@@ -207,7 +207,7 @@ void sortRecords() {
             } else if (sortChoice == 4) {
                 if (students[j].average < students[j+1].average) swap = true;
             } else {
-                std::cout << "Неверный выбор!\n";
+                std::cout << "Invalid choice!\n";
                 return;
             }
             
@@ -219,16 +219,16 @@ void sortRecords() {
         }
     }
 
-    if (sortChoice == 1) std::cout << "Записи отсортированы по фамилии (по возрастанию)\n";
-    else if (sortChoice == 2) std::cout << "Записи отсортированы по фамилии (по убыванию)\n";
-    else if (sortChoice == 3) std::cout << "Записи отсортированы по среднему баллу (по возрастанию)\n";
-    else if (sortChoice == 4) std::cout << "Записи отсортированы по среднему баллу (по убыванию)\n";
+    if (sortChoice == 1) std::cout << "Records sorted by surname (ascending)\n";
+    else if (sortChoice == 2) std::cout << "Records sorted by surname (descending)\n";
+    else if (sortChoice == 3) std::cout << "Records sorted by average grade (ascending)\n";
+    else if (sortChoice == 4) std::cout << "Records sorted by average grade (descending)\n";
 }
 
 void saveToFile() {
     FILE* file = fopen(filename, "wb");
     if (!file) {
-        std::cout << "Ошибка открытия файла для записи\n";
+        std::cout << "Error opening file for writing\n";
         return;
     }
     
@@ -236,13 +236,13 @@ void saveToFile() {
     fwrite(students, sizeof(Student), studentCount, file);
     
     fclose(file);
-    std::cout << "Данные сохранены в файл\n";
+    std::cout << "Data saved to file\n";
 }
 
 void loadFromFile() {
     FILE* file = fopen(filename, "rb");
     if (!file) {
-        std::cout << "Ошибка открытия файла для чтения\n";
+        std::cout << "Error opening file for reading\n";
         return;
     }
     
@@ -259,25 +259,25 @@ void loadFromFile() {
     fread(students, sizeof(Student), studentCount, file);
     
     fclose(file);
-    std::cout << "Данные загружены из файла\n";
+    std::cout << "Data loaded from file\n";
 }
 
 int main() {
     int choice;
     loadFromFile();
     do {
-        std::cout << "\n Меню управления базой данных студентов\n";
-        std::cout << "1. Создание базы данных (очистка всех записей)\n";
-        std::cout << "2. Просмотр всех записей\n";
-        std::cout << "3. Добавление записи\n";
-        std::cout << "4. Удаление записи\n";
-        std::cout << "5. Редактирование записи\n";
-        std::cout << "6. Сортировка записей\n";
-        std::cout << "7. Решение индивидуального задания\n";
-        std::cout << "8. Сохранить данные в файл\n";
-        std::cout << "9. Загрузить данные из файла\n";
-        std::cout << "0. Выход\n";
-        std::cout << "Выберите пункт меню: ";
+        std::cout << "\n Student Database Management Menu\n";
+        std::cout << "1. Create database (clear all records)\n";
+        std::cout << "2. View all records\n";
+        std::cout << "3. Add record\n";
+        std::cout << "4. Delete record\n";
+        std::cout << "5. Edit record\n";
+        std::cout << "6. Sort records\n";
+        std::cout << "7. Solve individual task\n";
+        std::cout << "8. Save data to file\n";
+        std::cout << "9. Load data from file\n";
+        std::cout << "0. Exit\n";
+        std::cout << "Select menu item: ";
         std::cin >> choice;
 
         switch (choice) {
@@ -309,10 +309,10 @@ int main() {
                 loadFromFile();
                 break;
             case 0:
-                std::cout << "Выход из программы\n";
+                std::cout << "Exiting program\n";
                 break;
             default:
-                std::cout << "Неверный выбор\n";
+                std::cout << "Invalid choice\n";
         }
     } while (choice != 0);
 

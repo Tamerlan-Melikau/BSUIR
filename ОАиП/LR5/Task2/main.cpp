@@ -5,13 +5,13 @@ int main(){
     double **a;
     int n, m;
 
-    std::cout << "Введите количество строк (n) ";
+    std::cout << "Enter number of rows (n) ";
     if(!(std::cin >> n)){
         std::cout << "Incorrect data input";
 
         return 1;
     };
-    std::cout << "Введите количество столбцов (m) ";
+    std::cout << "Enter number of columns (m) ";
     if(!(std::cin >> m)){
         std::cout << "Incorrect data input";
 
@@ -29,7 +29,7 @@ int main(){
         a[i] = new double[n];
     }
 
-    std::cout << "Введите через пробел все элементы: ";
+    std::cout << "Enter all items through the space: ";
 
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
@@ -37,7 +37,7 @@ int main(){
         }
     }
 
-    std::cout << "Введенная матрица:\n";
+    std::cout << "Entered matrix:\n";
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
             std::cout << std::setw(5) << a[i][j] << " ";
@@ -51,7 +51,7 @@ int main(){
             sum += a[i][j];
         }
     } 
-    std::cout << "Сумма элементов, лежащих ниже главной диогонали: " << sum << std::endl;
+    std::cout << "The sum of the elements below the main digest: " << sum << std::endl;
 
     int multi = 1;
     for(int i = 0; i < n - 1; i++) {
@@ -60,7 +60,7 @@ int main(){
         }
         m--;
     } 
-    std::cout << "Произведение элементов, лежащих над побочной диогональю: " << multi;
+    std::cout << "Multiplication of the elements lying above the secondary distance: " << multi;
 
     for(int i = 0; i < n; i++) {
         delete[] a[i];

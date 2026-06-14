@@ -4,23 +4,23 @@
 int main() {
     std::string S;
     int k;
-    std::cout << "Введите строку: ";
+    std::cout << "Eneter the line: ";
     getline(std::cin, S);
     int length = S.length();
     
-    std::cout << "Введите позицию k: ";
+    std::cout << "Eneter position k: ";
     std::cin >> k;
 
     if (k < 0 || k >= length) {
-        std::cout << "Позиция k за пределами строки" << std::endl;
+        std::cout << "Position k outside the line" << std::endl;
 
         return 0;
     }
     
-    int wordCount = 0;      // счетчик слов
-    bool inWord = false;    // флаг нахождения внутри слова
-    int currentWord = 0;    // номер текущего слова
-    
+    int wordCount = 0;
+    bool inWord = false;
+    int currentWord = 0;
+
     for (int i = 0; i < length; i++) {
         if (S[i] == ' ') {
             inWord = false;
@@ -38,12 +38,12 @@ int main() {
 
     if (S[k] == ' ') {
         if (currentWord > 0) {
-            std::cout << "Номер предыдущего слова: " << currentWord << std::endl;
+            std::cout << "Previous word number: " << currentWord << std::endl;
         } else {
-            std::cout << "Нет предыдущего слова" << std::endl;
+            std::cout << "No previous word" << std::endl;
         }
     } else {
-        std::cout << "Номер слова: " << currentWord << std::endl;
+        std::cout << "Word number: " << currentWord << std::endl;
     }
     
     return 0;

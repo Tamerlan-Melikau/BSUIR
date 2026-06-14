@@ -5,9 +5,9 @@ int main(){
     double **a;
     int n, m;
 
-    std::cout << "Введите количество строк (n) ";
+    std::cout << "Enter number of rows (n) ";
     std::cin >> n;
-    std::cout << "Введите количество столбцов (m) ";
+    std::cout << "Enter number of columns (m) ";
     std::cin >> m;
 
     a = new double*[n];
@@ -15,7 +15,7 @@ int main(){
         a[i] = new double[m];
     }
 
-    std::cout << "Введите через пробел все элементы";
+    std::cout << "Enter all items through the space";
 
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
@@ -23,7 +23,7 @@ int main(){
         }
     }
 
-    std::cout << "Введенная матрица:\n";
+    std::cout << "Entered matrix:\n";
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
             std::cout << std::setw(5) << a[i][j] << " ";
@@ -38,7 +38,7 @@ int main(){
             if(a[i][j] > 0){
                 pos = i;
                 flag = true;
-                std::cout << "Первая из строк, содержащяя хотябы один положительный элемент находится по номером " << i + 1;
+                std::cout << "The first of the lines containing a wish to have one positive element is below the number " << i + 1;
                 
                 break;
             }

@@ -57,8 +57,8 @@ int main() {
         counter++;
     }
 
-    std::cout << "\n Минимальное значение функции: " << min_y;
-    std::cout << "\n Максимальное значение функции: " << max_y;
+    std::cout << "\n Minimum function value: " << min_y;
+    std::cout << "\n Maximum function value: " << max_y;
 
     return 0;
 }

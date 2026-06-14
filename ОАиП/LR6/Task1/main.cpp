@@ -3,10 +3,10 @@
 
 int main() {
     std::string L;
-    std::cout << "Введите строку:";
+    std::cout << "Enter the line:";
     getline(std::cin, L);
     int length = L.length();
-    std::cout << "Длина: " << length << std::endl;;
+    std::cout << "Length: " << length << std::endl;;
 
     int counter = 0;
     if(length % 5 == 0){
@@ -22,6 +22,6 @@ int main() {
                 counter++;
             }
         }
-        std::cout << "Количество скобок всех видов: " << counter;
+        std::cout << "Number of brackets of all types: " << counter;
     }
 }

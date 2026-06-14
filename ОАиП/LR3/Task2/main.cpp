@@ -34,7 +34,7 @@ int main() {
         return 1;
     }
 
-    std::cout << "\n N |Число итераций | Сумма ряда | Значение функции | Дельта |\n";
+    std::cout << "\n N |Number of iterations | Sum | Function value | Delta |\n";
     std::cout << "---------------------------------------------------------------\n";
 
     int counter = 0;
