@@ -1,21 +1,22 @@
-# Логический вывод: расчёт премии сотрудников
+# kanren
 
-Программа на основе `kanren` — реляционного/логического программирования на Python. Система анализирует KPI, выполнение задач и наличие нарушений, чтобы определить право на премию и её размер.
+**kanren** is a library for relational (logic) programming in Python. It allows you to describe relationships between data and find all solutions that satisfy given conditions.
 
-## Как работает
+## Features
 
-1. В программе заданы факты о сотрудниках:
-   - уровень KPI (`low`, `high`, `excellent`)
-   - уровень выполнения задач (`low`, `medium`, `high`)
-   - нарушения (например, `lateness`, `error in report`)
+- Define relations using `Relation()`
+- Add facts using `facts()`
+- Search for solutions using `run()` and logic variables (`var()`)
+- Logical operators: `conde` (OR), `conjo` (AND), `fresh`
+- Recursive relations
 
-2. **Правила расчёта премии:**
-   - **Базовые критерии** для получения премии: KPI не ниже `high`, задачи не ниже `medium`, отсутствие нарушений.
-   - **Стандартная премия** — выполнение базовых критериев.
-   - **Высокая премия** — KPI = `excellent` И задачи = `high` (в дополнение к базовым критериям).
+## Advantages
 
-3. Программа выполняет 4 запроса:
-   - Query 1: кто прошёл базовые критерии
-   - Query 2: кто получает высокую премию
-   - Query 3: у кого есть нарушения (и какие)
-   - Query 4: детальный анализ по каждому сотруднику (KPI, задачи, нарушения, размер премии)
+- Declarative style — you describe *what* to find, not *how*
+- Automatically finds all possible solutions
+- Pure Python implementation
+- Suitable for problems where imperative algorithms are hard to write
+
+## Use Cases
+
+Logical inference, symbolic computing, constraint satisfaction, expert systems, Q&A systems, test data generation, business rule verification.

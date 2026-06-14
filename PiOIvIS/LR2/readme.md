@@ -1,21 +1,22 @@
-# Экспертная система: диагностика по симптомам
+# experta
 
-Простая экспертная система на базе библиотеки `experta`. Программа задаёт пользователю вопросы о симптомах и на основе правил ставит предположительный диагноз.
+**Experta** is a Python library for building expert systems. It implements rule-based reasoning.
 
-## Как работает
+## Features
 
-1. Система последовательно запрашивает у пользователя три симптома:
-   - температура (`normal/elevated/high/unknown`)
-   - кашель (`none/dry/wet/unknown`)
-   - насморк (`no/yes/unknown`)
+- Define facts and rules using decorators (`@Rule`)
+- Logical operators: `AND`, `OR`, `NOT`
+- Pattern matching with variables (`MATCH`)
+- Rule priorities
+- Forward and backward chaining
 
-2. На основе введённых симптомов срабатывают правила, которые могут объявить один из диагнозов:
-   - **flu** — грипп (высокая температура, кашель, насморк)
-   - **ARI** — острая респираторная инфекция (повышенная температура, кашель, насморк)
-   - **isolated_cough** — изолированный кашель (кашель без других выраженных симптомов)
-   - **rhinitis** — ринит (только насморк, без температуры и кашля)
-   - **healthy** — здоров (все симптомы в норме)
+## Advantages
 
-3. Если ни одно правило не подошло, выводится сообщение о невозможности однозначной диагностики с перечислением введённых симптомов.
+- Simple and declarative syntax
+- No need to learn separate languages (unlike CLIPS or Prolog)
+- Great for rapid prototyping
+- Pure Python implementation with no external dependencies
 
-4. Система использует механизм **правил с отрицанием** (`NOT`), чтобы избежать множественных диагнозов и выбрать наиболее подходящий.
+## Use Cases
+
+Medical diagnosis, technical support, decision-making systems, educational programs, logic-based chatbots.

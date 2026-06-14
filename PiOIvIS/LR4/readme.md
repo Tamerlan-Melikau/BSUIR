@@ -1,7 +1,22 @@
-Линейная регрессия: часы занятий и баллы
+# scikit-learn
 
-Программа демонстрирует простую и множественную линейную регрессию на синтетических данных с использованием `scikit-learn`.
+**scikit-learn** is the main machine learning library for Python. Built on top of NumPy and SciPy.
 
-Где можно использовать scikit-learn
+## Features
 
-Scikit-learn — основная библиотека для машинного обучения на Python. Подходит для задач регрессии (предсказание чисел), классификации (распознавание категорий), кластеризации (группировка объектов), сокращения размерности. Используется в анализе данных, прогнозировании, финансовом моделировании, медицинской диагностике, маркетинговых исследованиях.
+- **Regression** — predicting continuous values
+- **Classification** — recognizing categories
+- **Clustering** — grouping objects without supervision
+- **Dimensionality reduction** — reducing the number of features
+- **Data preprocessing** — scaling, normalization
+
+## Advantages
+
+- Simple and uniform API
+- Excellent documentation
+- Fast prototyping
+- Large community
+
+## Use Cases
+
+Data analysis, sales forecasting, credit scoring, medical diagnosis, marketing research, image processing, text analysis.

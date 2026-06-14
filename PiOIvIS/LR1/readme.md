@@ -1,15 +1,15 @@
-# Поиск циклов в ориентированном графе (igraph)
+# Cycle detection in directed graphs (igraph)
 
-Программа строит ориентированный граф по списку рёбер и находит все простые циклы.
+The program builds a directed graph from an edge list and finds all simple cycles.
 
-## Как работает
+## How it works
 
-1. В коде задаётся список рёбер (например, `[('A', 'B'), ('B', 'C'), ('C', 'A')]`).
-2. Программа строит ориентированный граф с помощью библиотеки `igraph`.
-3. Проверяет, есть ли в графе циклы, используя метод `is_dag()` (DAG — directed acyclic graph).
-4. Находит все **простые циклы** (циклы, в которых вершины не повторяются, кроме первой/последней) с помощью метода `simple_cycles()`.
-5. Выводит:
-   - список вершин графа,
-   - является ли граф ориентированным,
-   - наличие циклов,
-   - все найденные циклы в виде имён вершин.
+1. An edge list is defined in the code (e.g., `[('A', 'B'), ('B', 'C'), ('C', 'A')]`).
+2. The program builds a directed graph using the `igraph` library.
+3. Checks whether the graph contains cycles using the `is_dag()` method (DAG — directed acyclic graph).
+4. Finds all **simple cycles** (cycles where vertices do not repeat except the first/last) using the `simple_cycles()` method.
+5. Outputs:
+   - the list of graph vertices,
+   - whether the graph is directed,
+   - whether cycles exist,
+   - all found cycles using vertex names.

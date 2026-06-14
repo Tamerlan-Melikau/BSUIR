@@ -1,11 +1,11 @@
-# Граф: матрица смежности → матрица инцидентности
+# Graph: adjacency matrix → incidence matrix
 
-Программа преобразует матрицу смежности **неориентированного графа** в матрицу инцидентности.
+The program converts an **undirected graph** adjacency matrix into an incidence matrix.
 
-## Как работает
+## How it works
 
-1. Пользователь вводит размер `n` квадратной матрицы смежности.
-2. Заполняет матрицу значениями `0` и `1` (где `1` означает наличие ребра между вершинами).
-3. Программа автоматически подсчитывает количество рёбер.
-4. Строит матрицу инцидентности размером `n × число_рёбер`.
-5. Выводит полученную матрицу на экран.
+1. The user enters the size `n` of the square adjacency matrix.
+2. Fills the matrix with `0` and `1` (where `1` indicates an edge between vertices).
+3. The program automatically counts the number of edges.
+4. Builds an incidence matrix of size `n × number_of_edges`.
+5. Outputs the resulting matrix.
