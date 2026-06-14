@@ -6,23 +6,23 @@
         List<int> unionList = new List<int>();
         List<int> intersectList = new List<int>();
 
-        Console.WriteLine("Введите элементы первого множества (через пробел): \n");
+        Console.WriteLine("Enter elements of the first set (separated by spaces): \n");
         List<int> firstList = ReadSetFromConsole();
 
-        Console.WriteLine("Введите элементы второго множества (через пробел): \n");
+        Console.WriteLine("Enter elements of the second set (separated by spaces): \n");
         List<int> secondList = ReadSetFromConsole();
 
-        // 1. Объединение
-        Console.Write("Объединение: ");
+        // 1. Union
+        Console.Write("Union: ");
         unionList = firstList.Union(secondList).ToList();
         Console.WriteLine(string.Join(" ", unionList));
 
-        // 2. Пересечение
-        Console.Write("Пересечение: ");
+        // 2. Intersection
+        Console.Write("Intersection: ");
         intersectList = firstList.Intersect(secondList).ToList();
         Console.WriteLine(string.Join(" ", intersectList));
 
-        // 3. Разность
+        // 3. Difference
         foreach (var element in firstList)
         {
             if (!secondList.Contains(element))
@@ -31,11 +31,11 @@
             }
         }
 
-        Console.Write("Разность: ");
+        Console.Write("Difference: ");
         Console.WriteLine(string.Join(" ", resultList));
         resultList.Clear();
 
-        // 4. Симметрическая разность
+        // 4. Symmetric difference
         foreach (var element in unionList)
         {
             if (!intersectList.Contains(element))
@@ -44,12 +44,12 @@
             }
         }
 
-        Console.Write("Симметрическая Разность: ");
+        Console.Write("Symmetric Difference: ");
         Console.WriteLine(string.Join(" ", resultList));
         resultList.Clear();
 
-        // 5. Дополнение
-        Console.Write("Дополнение (относительно U): ");
+        // 5. Complement
+        Console.Write("Complement (relative to U): ");
         foreach (var element in unionList)
         {
             if (!secondList.Contains(element))
@@ -58,7 +58,7 @@
             }
         }
 
-        Console.Write("Дополнение: ");
+        Console.Write("Complement: ");
         Console.WriteLine(string.Join(" ", resultList));
         resultList.Clear();
     }
@@ -71,7 +71,7 @@
             string input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input))
             {
-                Console.WriteLine("Введите хотя бы один элемент:");
+                Console.WriteLine("Enter at least one element:");
                 continue;
             }
 
@@ -80,13 +80,13 @@
 
             foreach (string element in elements)
             {
-                if (int.TryParse(element, out int number)) // TryParse - переводит в число
+                if (int.TryParse(element, out int number)) // TryParse - converts to number
                 {
                     result.Add(number);
                 }
                 else
                 {
-                    Console.WriteLine($"Ошибка: '{element}' не является числом. Попробуйте снова:");
+                    Console.WriteLine($"Error: '{element}' is not a number. Try again:");
                     isInvalidInput = true;
                     break;
                 }
@@ -94,7 +94,7 @@
 
             if (!isInvalidInput)
             {
-                return result; // выход из цикла вайл
+                return result; // exit while loop
             }
 
             isInvalidInput = false;

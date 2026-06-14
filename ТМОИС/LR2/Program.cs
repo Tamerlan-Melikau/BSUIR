@@ -6,70 +6,70 @@ public class Program
 {
     public static void Main()
     {
-        Console.WriteLine("Введите элементы первого множества (через пробел):");
+        Console.WriteLine("Enter elements of the first set (separated by spaces):");
         List<int> firstList = ReadSetFromConsole();
 
-        //if (firstList.Count %2 != 0)
-        //{
-        //    Console.WriteLine("Размерность списка должна быть четной");
-        //    return;
-        //}
+        if (firstList.Count %2 != 0)
+        {
+           Console.WriteLine("List size must be even");
+           return;
+        }
 
-        Console.WriteLine("Введите элементы второго множества (через пробел):");
+        Console.WriteLine("Enter elements of the second set (separated by spaces):");
         List<int> secondList = ReadSetFromConsole();
 
-        //if (secondList.Count % 2 != 0)
-        //{
-        //    Console.WriteLine("Размерность списка должна быть четной");
-        //    return;
-        //}
+        if (secondList.Count % 2 != 0)
+        {
+           Console.WriteLine("List size must be even");
+           return;
+        }
 
         var firstTuples = SplitIntoPairs(firstList);
-        Console.WriteLine("Кортежи первого множества:");
+        Console.WriteLine("Tuples of the first set:");
         foreach (var tuple in firstTuples)
         {
             Console.WriteLine($"({tuple.Item1}, {tuple.Item2})");
         }
 
         var secondTuples = SplitIntoPairs(secondList);
-        Console.WriteLine("\nКортежи второго множества:");
+        Console.WriteLine("\nTuples of the second set:");
         foreach (var tuple in secondTuples)
         {
             Console.WriteLine($"({tuple.Item1}, {tuple.Item2})");
         }
         
         var projectionXFirst = ProjectOnX(firstTuples);
-        Console.WriteLine("Проекция на X первого отношения:");
+        Console.WriteLine("Projection on X of the first relation:");
         Console.WriteLine(string.Join(" ", projectionXFirst));
 
         var projectionYFirst = ProjectOnY(firstTuples);
-        Console.WriteLine("\nПроекция на Y первого отношения:");
+        Console.WriteLine("\nProjection on Y of the first relation:");
         Console.WriteLine(string.Join(" ", projectionYFirst));
 
         var projectionXSecond = ProjectOnX(secondTuples);
-        Console.WriteLine("\nПроекция на X второго отношения:");
+        Console.WriteLine("\nProjection on X of the second relation:");
         Console.WriteLine(string.Join(" ", projectionXSecond));
 
         var projectionYSecond = ProjectOnY(secondTuples);
-        Console.WriteLine("\nПроекция на Y второго отношения:");
+        Console.WriteLine("\nProjection on Y of the second relation:");
         Console.WriteLine(string.Join(" ", projectionYSecond));
         
         var invertedFirst = InvertRelation(firstTuples);
-        Console.WriteLine("Инверсия первого отношения:");
+        Console.WriteLine("Inversion of the first relation:");
         foreach (var tuple in invertedFirst)
         {
             Console.WriteLine($"({tuple.Item1}, {tuple.Item2})");
         }
 
         var invertedSecond = InvertRelation(secondTuples);
-        Console.WriteLine("\nИнверсия второго отношения:");
+        Console.WriteLine("\nInversion of the second relation:");
         foreach (var tuple in invertedSecond)
         {
             Console.WriteLine($"({tuple.Item1}, {tuple.Item2})");
         }
         
         var composition = ComposeRelations(firstTuples, secondTuples);
-        Console.WriteLine("Композиция первого и второго отношения:");
+        Console.WriteLine("Composition of the first and second relations:");
         foreach (var tuple in composition)
         {
             Console.WriteLine($"({tuple.Item1}, {tuple.Item2})");
@@ -146,7 +146,7 @@ public class Program
             string input = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(input))
             {
-                Console.WriteLine("Введите хотя бы один элемент:");
+                Console.WriteLine("Enter at least one element:");
                 continue;
             }
 
@@ -161,7 +161,7 @@ public class Program
                 }
                 else
                 {
-                    Console.WriteLine($"Ошибка: '{element}' не является числом. Попробуйте снова:");
+                    Console.WriteLine($"Error: '{element}' is not a number. Try again:");
                     isInvalidInput = true;
                     break;
                 }

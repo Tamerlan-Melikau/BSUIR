@@ -54,7 +54,7 @@ class Program
 
     static List<string> InputSet(string name)
     {
-        Console.WriteLine($"Введите элементы множества {name} через пробел:");
+        Console.WriteLine($"Enter elements of set {name} separated by spaces:");
         var input = Console.ReadLine()!;
         return input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                    .Select(x => x.Trim())
@@ -64,7 +64,7 @@ class Program
 
     static List<(string, string)> InputGraph(string setNameX, string setNameY)
     {
-        Console.WriteLine($"Введите пары отношения между {setNameX} и {setNameY} (каждая пара в формате 'a b', по одной паре на строку). Для завершения ввода введите пустую строку:");
+        Console.WriteLine($"Enter relation pairs between {setNameX} and {setNameY} (each pair in 'a b' format, one pair per line). Press Enter on an empty line to finish:");
         
         var g = new List<(string, string)>();
         
@@ -81,7 +81,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("Ошибка: введите пару в формате 'a b'");
+                Console.WriteLine("Error: enter a pair in 'a b' format");
             }
         }
         
@@ -90,7 +90,7 @@ class Program
 
     static List<(string, string)> InputGraphFromString(string name)
     {
-        Console.WriteLine($"Введите пары отношения для {name} (каждая пара в формате 'a b', по одной паре на строку). Для завершения ввода введите пустую строку:");
+        Console.WriteLine($"Enter relation pairs for {name} (each pair in 'a b' format, one pair per line). Press Enter on an empty line to finish:");
         
         var g = new List<(string, string)>();
         
@@ -107,7 +107,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("Ошибка: введите пару в формате 'a b'");
+                Console.WriteLine("Error: enter a pair in 'a b' format");
             }
         }
         
@@ -136,85 +136,76 @@ class Program
 
     static void Main()
     {
-        Console.WriteLine("Ввод множеств и отношений\n");
+        Console.WriteLine("Input sets and relations\n");
 
-        // Ввод множества пар H (через пробел и Enter)
         var H = InputGraphFromString("H");
         
         var X = InputSet("X");
         var Y = InputSet("Y");
         var G = InputGraph("X", "Y");
 
-        Console.WriteLine("\nИсходные данные");
+        Console.WriteLine("\nInitial data");
         PrintGraph("H", H);
         PrintSet("X", X);
         PrintSet("Y", Y);
         PrintGraph("G", G);
 
-        Console.WriteLine("\n Все операции \n");
+        Console.WriteLine("\n All operations \n");
 
-        Console.WriteLine("1. Объединение G и H");
+        Console.WriteLine("1. Union of G and H");
         var unionGH = Union(G, H);
         PrintGraph("G U H", unionGH);
         Console.WriteLine();
 
-        Console.WriteLine("2. Пересечение G и H ");
+        Console.WriteLine("2. Intersection of G and H ");
         var intersectGH = Intersect(G, H);
-        PrintGraph("G П H", intersectGH);
+        PrintGraph("G ∩ H", intersectGH);
         Console.WriteLine();
 
-        Console.WriteLine("3. Разность G и H");
+        Console.WriteLine("3. Difference of G and H");
         var subtractGH = Subtract(G, H);
         PrintGraph("G \\ H", subtractGH);
         Console.WriteLine();
 
-        Console.WriteLine("4. Разность H и G");
+        Console.WriteLine("4. Difference of H and G");
         var subtractHG = Subtract(H, G);
         PrintGraph("H \\ G", subtractHG);
         Console.WriteLine();
 
-        Console.WriteLine("5. Инверсия отношения G^-1");
+        Console.WriteLine("5. Inversion of relation G^-1");
         var invertedG = Invert(G);
         PrintGraph("G^-1", invertedG);
         Console.WriteLine();
 
-        Console.WriteLine("6. Инверсия отношения H^-1");
+        Console.WriteLine("6. Inversion of relation H^-1");
         var invertedH = Invert(H);
         PrintGraph("H^-1", invertedH);
         Console.WriteLine();
 
-        Console.WriteLine("7. Композиция G и H");
+        Console.WriteLine("7. Composition of G and H");
         var compositionGH = Compose(G, H);
-        PrintGraph("G о H", compositionGH);
+        PrintGraph("G ∘ H", compositionGH);
         Console.WriteLine();
 
-        Console.WriteLine("8. Композиция H и G");
+        Console.WriteLine("8. Composition of H and G");
         var compositionHG = Compose(H, G);
-        PrintGraph("H о G", compositionHG);
+        PrintGraph("H ∘ G", compositionHG);
         Console.WriteLine();
 
-        Console.WriteLine("\n14. Операции с подмножествами");
+        Console.WriteLine("\n14. Operations with subsets");
         
-        Console.WriteLine("Введите подмножество A принадлежащее множеству X (элементы через пробел):");
+        Console.WriteLine("Enter subset A of set X (elements separated by spaces):");
         var A = InputSet("A");
         
         var imageA_G = Image(G, A);
-        Console.Write("Образ множества A через G: ");
+        Console.Write("Image of set A through G: ");
         PrintSet("Γ_G(A)", imageA_G);
 
-        // var imageA_H = Image(H, A);
-        // Console.Write("Образ множества A через H: ");
-        // PrintSet("Γ_H(A)", imageA_H);
-
-        Console.WriteLine("Введите подмножество B принадлежащее множеству Y (элементы через пробел):");
+        Console.WriteLine("Enter subset B of set Y (elements separated by spaces):");
         var B = InputSet("B");
         
         var preimageB_G = Preimage(G, B);
-        Console.Write("Прообраз множества B через G: ");
+        Console.Write("Preimage of set B through G: ");
         PrintSet("Γ_G^-1(B)", preimageB_G);
-
-        // var preimageB_H = Preimage(H, B);
-        // Console.Write("Прообраз множества B через H: ");
-        // PrintSet("Γ_H^-1(B)", preimageB_H);
     }
 }
