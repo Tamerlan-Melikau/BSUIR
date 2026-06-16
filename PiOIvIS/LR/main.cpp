@@ -3,7 +3,7 @@
 #include <cstdio>
 
 struct Student {
-    char surname[100];
+    char surname[67];
 };
 
 struct Speciality {
