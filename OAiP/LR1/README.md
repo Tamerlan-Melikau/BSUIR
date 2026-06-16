@@ -1,6 +1,6 @@
 # Maximum Element Search in C++
 
-A C++ program that finds the maximum element in an array using two different approaches.
+A program that finds the maximum element in an array using two different approaches.
 
 ## Features
 

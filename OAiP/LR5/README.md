@@ -1,6 +1,6 @@
 # Binary Search Tree Directory in C++
 
-A C++ console application that implements a Binary Search Tree (BST) for storing and managing records consisting of numeric keys and associated names.
+A C++ program that implements a Binary Search Tree (BST) for storing and managing records consisting of numeric keys and associated names.
 
 ## Features
 

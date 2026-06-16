@@ -1,6 +1,6 @@
 # Hash Table Implementation in C++
 
-A C++ program that stores and searches person records using a hash table, where a person's height serves as the key.
+A C++ program for managing person records using a hash table
 
 ## Features
 

@@ -1,6 +1,6 @@
 # Doubly Linked List Operations in C++
 
-A C++ console application that implements a doubly linked list and provides various operations for managing and processing list elements.
+A C++ program that implements a doubly linked list and provides various operations for managing and processing list elements.
 
 ## Features
 

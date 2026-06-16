@@ -1,6 +1,6 @@
 # Stack Operations in C++
 
-A C++ console application that implements a stack using a singly linked list and provides various operations for managing and processing stack elements.
+A C++ program that implements a stack using a singly linked list and provides various operations for managing and processing stack elements.
 
 ## Features
 

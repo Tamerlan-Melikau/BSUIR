@@ -1,6 +1,6 @@
 # Reverse Polish Notation Calculator in C++
 
-A C++ console application that converts an infix mathematical expression into Reverse Polish Notation (RPN) and evaluates the result using stack-based algorithms.
+A C++ program that converts an infix mathematical expression into Reverse Polish Notation (RPN) and evaluates the result using stack-based algorithms.
 
 ## Features
 
