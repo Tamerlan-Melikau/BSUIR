@@ -1,16 +1,14 @@
-```markdown
 # BSUIR Labs
 
-Here you can find basic C++ implementations covering fundamental programming concepts.
+A collection of laboratory works completed at BSUIR, covering fundamental programming concepts and algorithms in C++.
 
-## What's inside
+## Contents
 
-- Mathematical expressions and functions
-- Conditional statements and loops
-- Arrays and matrices (static + dynamic)
-- String processing (C-style and std::string)
-- Structures and dynamic memory
-- File I/O operations
-- Recursive algorithms
-- Full student database CRUD application
-```
+* Mathematical expressions and functions
+* Conditional statements and loops
+* Arrays and matrices (static and dynamic)
+* String processing (`char[]` and `std::string`)
+* Structures and dynamic memory allocation
+* File input/output operations
+* Recursive algorithms
+* Student database CRUD application
