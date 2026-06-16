@@ -30,10 +30,9 @@ struct University {
 University university;
 const char* filename = "university.txt";
 
-// Initialize university
 void initUniversity() {
     std::cout << "Enter university name: ";
-    std::cin.ignore(); // Clear buffer
+    std::cin.ignore();
     std::cin.getline(university.name, 100);
     
     university.facultyCapacity = 5;
@@ -43,7 +42,6 @@ void initUniversity() {
     std::cout << "University '" << university.name << "' created.\n";
 }
 
-// Functions for managing faculties
 void addFaculty() {
     if (university.facultyCount >= university.facultyCapacity) {
         Faculty* newFaculties = new Faculty[university.facultyCapacity * 2];
@@ -139,7 +137,6 @@ void addStudent(int facultyIndex, int specialityIndex) {
               << speciality.name << "' of faculty '" << faculty.name << "'\n";
 }
 
-// View all data
 void viewAllData() {
     std::cout << "\n-------------------------------------------\n";
     std::cout << "UNIVERSITY: " << university.name << std::endl;
@@ -180,7 +177,6 @@ void viewAllData() {
     std::cout << "Total faculties: " << university.facultyCount << std::endl;
 }
 
-// Delete student
 void deleteStudent() {
     std::cout << "\nDELETE STUDENT\n";
     
@@ -192,7 +188,7 @@ void deleteStudent() {
     std::cout << "Enter faculty index (1-" << university.facultyCount << "): ";
     int facultyIndex;
     std::cin >> facultyIndex;
-    facultyIndex--; // Convert to 0-indexing
+    facultyIndex--;
     
     if (facultyIndex < 0 || facultyIndex >= university.facultyCount) {
         std::cout << "Invalid faculty index\n";
@@ -235,7 +231,6 @@ void deleteStudent() {
         return;
     }
     
-    // Delete student
     for (int i = studentIndex; i < speciality.studentCount - 1; i++) {
         speciality.students[i] = speciality.students[i + 1];
     }
@@ -244,7 +239,6 @@ void deleteStudent() {
     std::cout << "Student deleted\n";
 }
 
-// Edit student
 void editStudent() {
     std::cout << "\nEDIT STUDENT\n";
     
@@ -312,7 +306,6 @@ void editStudent() {
     std::cout << "Student data updated\n";
 }
 
-// Sort students by surname
 void sortStudents(int facultyIndex, int specialityIndex) {
     if (facultyIndex < 0 || facultyIndex >= university.facultyCount) {
         std::cout << "Invalid faculty index\n";
@@ -364,7 +357,6 @@ void sortStudents(int facultyIndex, int specialityIndex) {
     std::cout << "Students sorted\n";
 }
 
-// Save to file
 void saveToFile() {
     FILE* file = fopen(filename, "wb");
     if (!file) {
@@ -372,20 +364,16 @@ void saveToFile() {
         return;
     }
     
-    // Save university data
     fwrite(&university, sizeof(University), 1, file);
     
-    // Save faculties
     for (int i = 0; i < university.facultyCount; i++) {
         Faculty& faculty = university.faculties[i];
         fwrite(&faculty, sizeof(Faculty), 1, file);
         
-        // Save specialities for each faculty
         for (int j = 0; j < faculty.specialityCount; j++) {
             Speciality& speciality = faculty.specialities[j];
             fwrite(&speciality, sizeof(Speciality), 1, file);
             
-            // Save students for each speciality
             fwrite(speciality.students, sizeof(Student), speciality.studentCount, file);
         }
     }
@@ -394,7 +382,6 @@ void saveToFile() {
     std::cout << "Data saved to file\n";
 }
 
-// Load from file
 void loadFromFile() {
     FILE* file = fopen(filename, "rb");
     if (!file) {
@@ -402,8 +389,6 @@ void loadFromFile() {
         return;
     }
     
-    // Clear current data
-    // Clear all students
     for (int i = 0; i < university.facultyCount; i++) {
         Faculty& faculty = university.faculties[i];
         for (int j = 0; j < faculty.specialityCount; j++) {
@@ -413,32 +398,24 @@ void loadFromFile() {
         delete[] faculty.specialities;
     }
     
-    // Clear faculties
     delete[] university.faculties;
     
-    // Load university data
     fread(&university, sizeof(University), 1, file);
     
-    // Allocate memory for faculties
     university.faculties = new Faculty[university.facultyCapacity];
     
-    // Load faculties
     for (int i = 0; i < university.facultyCount; i++) {
         Faculty& faculty = university.faculties[i];
         fread(&faculty, sizeof(Faculty), 1, file);
         
-        // Allocate memory for specialities
         faculty.specialities = new Speciality[faculty.specialityCapacity];
         
-        // Load specialities for each faculty
         for (int j = 0; j < faculty.specialityCount; j++) {
             Speciality& speciality = faculty.specialities[j];
             fread(&speciality, sizeof(Speciality), 1, file);
             
-            // Allocate memory for students
             speciality.students = new Student[speciality.studentCapacity];
             
-            // Load students for each speciality
             fread(speciality.students, sizeof(Student), speciality.studentCount, file);
         }
     }
@@ -447,9 +424,7 @@ void loadFromFile() {
     std::cout << "Data loaded from file\n";
 }
 
-// Clean up memory
 void cleanup() {
-    // Clear all students
     for (int i = 0; i < university.facultyCount; i++) {
         Faculty& faculty = university.faculties[i];
         for (int j = 0; j < faculty.specialityCount; j++) {
@@ -459,12 +434,10 @@ void cleanup() {
         delete[] faculty.specialities;
     }
     
-    // Clear faculties
     delete[] university.faculties;
 }
 
 int main() {
-    // Create BSUIR university by default
     strcpy(university.name, "BSUIR");
     university.facultyCapacity = 5;
     university.facultyCount = 0;
@@ -475,7 +448,7 @@ int main() {
     int choice;
     do {
         std::cout << "\n-------------------------------------------\n";
-        std::cout << "UNIVERSITY MANAGEMENT SYSTEM '" << university.name << "'\n";
+        std::cout << "University Management System '" << university.name << "'\n";
         std::cout << "-------------------------------------------\n";
         std::cout << "1. Add faculty\n";
         std::cout << "2. Add speciality to faculty\n";

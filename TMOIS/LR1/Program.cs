@@ -12,17 +12,14 @@
         Console.WriteLine("Enter elements of the second set (separated by spaces): \n");
         List<int> secondList = ReadSetFromConsole();
 
-        // 1. Union
         Console.Write("Union: ");
         unionList = firstList.Union(secondList).ToList();
         Console.WriteLine(string.Join(" ", unionList));
 
-        // 2. Intersection
         Console.Write("Intersection: ");
         intersectList = firstList.Intersect(secondList).ToList();
         Console.WriteLine(string.Join(" ", intersectList));
 
-        // 3. Difference
         foreach (var element in firstList)
         {
             if (!secondList.Contains(element))
@@ -35,7 +32,6 @@
         Console.WriteLine(string.Join(" ", resultList));
         resultList.Clear();
 
-        // 4. Symmetric difference
         foreach (var element in unionList)
         {
             if (!intersectList.Contains(element))
@@ -48,7 +44,6 @@
         Console.WriteLine(string.Join(" ", resultList));
         resultList.Clear();
 
-        // 5. Complement
         Console.Write("Complement (relative to U): ");
         foreach (var element in unionList)
         {
@@ -80,7 +75,7 @@
 
             foreach (string element in elements)
             {
-                if (int.TryParse(element, out int number)) // TryParse - converts to number
+                if (int.TryParse(element, out int number))
                 {
                     result.Add(number);
                 }
@@ -94,7 +89,7 @@
 
             if (!isInvalidInput)
             {
-                return result; // exit while loop
+                return result;
             }
 
             isInvalidInput = false;
